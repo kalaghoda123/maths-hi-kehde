@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magical Math World</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Three.js Import Map -->
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+            }
+        }
+    </script>
+    <!-- MediaPipe Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Comic+Neue:wght@400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div id="main-container">
+        <!-- Header -->
+        <header style="display: none;">
+            <h1>✨ Magical Math World ✨</h1>
+            <div id="status-bar">
+                <span id="camera-status">📷 Camera: Loading...</span>
+                <span id="instruction-text">👋 Wave to start!</span>
+            </div>
+        </header>
+
+        <!-- Main Game Area -->
+        <div id="game-area">
+            <!-- Camera & Canvas Wrapper -->
+            <div id="visual-wrapper">
+                <video id="input_video" class="input_video" autoplay playsinline muted></video>
+                <canvas id="output_canvas" class="output_canvas"></canvas>
+            </div>
+
+            <!-- UI Overlay for Game Elements -->
+            <div id="ui-overlay">
+                <div id="menu-screen" class="active-screen">
+                    <h2>Pick a Game!</h2>
+                    <div class="game-cards">
+                        <div class="card" data-module="counting">
+                            <span class="emoji">🖐️</span>
+                            <span>Finger Counting</span>
+                        </div>
+                        <div class="card" data-module="addition">
+                            <span class="emoji">➕</span>
+                            <span>Visual Addition</span>
+                        </div>
+                        <div class="card" data-module="shapes">
+                            <span class="emoji">🎨</span>
+                            <span>Shape Drawing</span>
+                        </div>
+                        <div class="card" data-module="comparison">
+                            <span class="emoji">⚖️</span>
+                            <span>Bigger or Smaller</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game Containers (Hidden by default) -->
+                <div id="counting-game" class="game-screen hidden"></div>
+                <div id="addition-game" class="game-screen hidden"></div>
+                <div id="shapes-game" class="game-screen hidden"></div>
+                <div id="comparison-game" class="game-screen hidden"></div>
+
+                <button id="back-home-btn" class="hidden">🏠 Home</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Application Logic -->
+    <script type="module" src="app.js"></script>
+</body>
+
+</html>
